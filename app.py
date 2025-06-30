@@ -20,7 +20,7 @@ top_n_matches = st.number_input("Top N Matches per Item", min_value=1, max_value
 def get_embedding(text, api_key):
     try:
         openai.api_key = api_key
-        response = openai.embeddings.create(
+        response = openai.Embedding.create(
             input=text,
             model="text-embedding-3-small"
         )
