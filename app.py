@@ -57,8 +57,12 @@ if openai_api_key and catalogue_file and adtrans_file:
     st.info("Generating embeddings for Adtrans descriptions...")
     df_adtrans_subset["Embedding"] = df_adtrans_subset["Description"].apply(lambda x: get_embedding(x, openai_api_key))
 
+    df_catalogue_subset = df_catalogue_subset[df_catalogue_subset["Embedding"].notnull()]
+    df_adtrans_subset = df_adtrans_subset[df_adtrans_subset["Embedding"].notnull()]
+
     cat_embeddings = np.array(df_catalogue_subset["Embedding"].tolist())
     ad_embeddings = np.array(df_adtrans_subset["Embedding"].tolist())
+
 
     st.info("Calculating similarity scores...")
     similarity_matrix = cosine_similarity(cat_embeddings, ad_embeddings)
