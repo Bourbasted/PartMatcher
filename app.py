@@ -16,6 +16,8 @@ threshold = st.slider("Description Similarity Threshold", 0.0, 1.0, 0.6, 0.05)
 top_n_matches = st.number_input("Top N Matches per Item", min_value=1, max_value=10, value=3)
 
 @st.cache_data(show_spinner=False)
+from openai import OpenAI
+
 def get_embedding(text, api_key):
     try:
         client = OpenAI(api_key=api_key)
