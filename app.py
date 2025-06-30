@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.title("Parts Matcher Pro (with OpenAI Embeddings)")
 st.write("Upload two spreadsheets with part descriptions to find likely matches using AI-powered semantic similarity.")
 
-openai_api_key = st.text_input("Enter your OpenAI API Key", type="password")
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 catalogue_file = st.file_uploader("Upload Catalogue File", type=["xlsx", "csv"])
 adtrans_file = st.file_uploader("Upload Adtrans File", type=["xlsx", "csv"])
